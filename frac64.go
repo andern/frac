@@ -7,10 +7,7 @@ type Frac64 struct {
 }
 
 func (a Frac64) Mul(b Frac64) Frac64 {
-	neg := a.Neg || b.Neg
-	if a.Neg && b.Neg {
-		neg = false
-	}
+	neg := a.Neg != b.Neg
 	return Frac64{
 		Num: a.Num * b.Num,
 		Den: a.Den * b.Den,
@@ -19,10 +16,7 @@ func (a Frac64) Mul(b Frac64) Frac64 {
 }
 
 func (a Frac64) Div(b Frac64) Frac64 {
-	neg := a.Neg || b.Neg
-	if a.Neg && b.Neg {
-		neg = false
-	}
+	neg := a.Neg != b.Neg
 	return Frac64{
 		Num: a.Num * b.Den,
 		Den: a.Den * b.Num,
